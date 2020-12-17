@@ -1,0 +1,286 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>sleepyti.me bedtime calculator</title>
+    <meta
+      name="description"
+      content="Sleepyti.me bedtime calculator helps you wake up refreshed by finding the best time to go to sleep."
+    />
+    <meta name="author" content="David Shaw" />
+    <meta
+      property="og:image"
+      content="https://sleepyti.me/wp-content/uploads/2020/03/bedtime-calculator-social-media-image.jpg"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/app/css/normalize.css" />
+    <link rel="stylesheet" href="/app/css/index.css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <!-- FAVICON courtesy of Stephen McKamey, Noun Project -->
+    <!-- Modified by David Shaw. CC licensed. -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/android-icon-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/app/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      $(document).ready(function () {
+        $("#ad").fadeOut(1);
+        $(".back").click(function () {
+          window.location = "/";
+        });
+        $("#calculate").click(function () {
+          if (
+            $("#hour").val() != "(hour)" &&
+            $("#minute").val() != "(minute)"
+          ) {
+            $("#start").hide();
+            var setTime = new Date();
+            if ($("#hour").val() == 12) {
+              $("#hour").val(0);
+            }
+            if ($("#ampm").val() == "AM") {
+              setTime.setHours($("#hour").val());
+            } else if ($("#ampm").val() == "PM") {
+              setTime.setHours(+$("#hour").val() + 12);
+            }
+            setTime.setMinutes($("#minute").val());
+            var res1 = new Date(setTime.getTime() + 90 * 60000);
+            var res2 = new Date(res1.getTime() + 90 * 60000);
+            var res3 = new Date(res2.getTime() + 90 * 60000);
+            var res4 = new Date(res3.getTime() + 90 * 60000);
+            var res5 = new Date(res4.getTime() + 90 * 60000);
+            var res6 = new Date(res5.getTime() + 90 * 60000);
+
+            function retDate(dateObj) {
+              var formatted = "";
+              var pm = false;
+              if (dateObj.getHours() > 12) {
+                formatted = dateObj.getHours() - 12;
+                pm = true;
+              } else if (dateObj.getHours() < 12 && dateObj.getHours() != 0) {
+                formatted = dateObj.getHours();
+              } else if (dateObj.getHours() == 0) {
+                formatted = "12";
+              } else if (dateObj.getHours() == 12) {
+                formatted = "12";
+                pm = true;
+              }
+              if (dateObj.getMinutes() < 10) {
+                formatted = formatted + ":0" + dateObj.getMinutes();
+              } else {
+                formatted = formatted + ":" + dateObj.getMinutes();
+              }
+              if (pm == true) {
+                formatted = formatted + " PM";
+              } else {
+                formatted = formatted + " AM";
+              }
+              return formatted;
+            }
+
+            $("#sleepTime").html(String(retDate(setTime)));
+            $("#result6").html(String(retDate(res6)));
+            $("#result5").html(String(retDate(res5)));
+            $("#result4").html(String(retDate(res4)));
+            $("#result3").html(String(retDate(res3)));
+            $("#result2").html(String(retDate(res2)));
+            $("#result1").html(String(retDate(res1)));
+            $("#results").show();
+            $("#feedback").fadeIn();
+            $("#ad").fadeIn();
+          } // end hour/minute check if
+          else {
+            alert(
+              "Please select an hour and a minute before trying to calculate!"
+            );
+          } // end not-filled check
+        }); // end calculate
+      });
+    </script>
+  </head>
+  <body>
+    <nav>
+      <div id="logo">
+        <img
+          class="icon"
+          src="https://sleepyti.me/wp-content/uploads/2019/09/home-logo-sleepy-time.png"
+        />
+      </div>
+    </nav>
+    <div class="row">
+      <div class="twelve columns">
+        <h2 style="text-align: center; margin-top: 10px; font-size: 150%">
+          sleepyti.me
+        </h2>
+        <div id="start">
+          <div style="text-align: center">
+            <p>
+              <span style="font-size: 150%">I plan to fall asleep at...</span
+              ><br /><br />
+              <select id="hour" style="background-color: #001f3f">
+                <option>(hour)</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+              <select id="minute" style="background-color: #001f3f">
+                <option>(minute)</option>
+                <option selected>00</option>
+                <option>05</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>35</option>
+                <option>40</option>
+                <option>45</option>
+                <option>50</option>
+                <option>55</option>
+              </select>
+              <select id="ampm" style="background-color: #001f3f">
+                <option>PM</option>
+                <option>AM</option>
+              </select>
+              <br />
+              <button id="calculate">calculate</button>
+            </p>
+            <br /><br /><br />
+            <button>
+              <a href="https://sleepyti.me/" style="text-decoration: none"
+                >Back to Homepage</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- end #start -->
+        <div id="results" style="display: none">
+          <p style="font-size: 150%; color: #39cccc">
+            If you <b>fall asleep</b> at <span id="sleepTime"></span>, you
+            should try to <b>wake up</b> at one of the following times:
+          </p>
+          <center>
+            <span
+              id="result1"
+              style="font-size: 300%; color: #666666"
+              title="One Cycle"
+            ></span>
+            <i style="font-size: 200%">or </i>
+            <span
+              id="result2"
+              style="font-size: 300%; color: #666666"
+              title="Two Cycle"
+            ></span>
+            <i style="font-size: 200%">or </i>
+            <span
+              id="result3"
+              style="font-size: 300%; color: #99cc66"
+              title="Three Cycle"
+            ></span>
+            <i style="font-size: 200%">or </i>
+            <span
+              id="result4"
+              style="font-size: 300%; color: #99cc66"
+              title="Four Cycles"
+            ></span>
+            <i style="font-size: 200%">or </i>
+            <span
+              id="result5"
+              style="font-size: 300%; color: #00cc33"
+              title="Five Cycles"
+            ></span>
+            <i style="font-size: 200%">or </i>
+            <span
+              id="result6"
+              style="font-size: 300%; color: #00cc33"
+              title="Six Cycles"
+            ></span
+            ><i style="font-size: 200%">or </i>
+          </center>
+          <p style="margin-top: 1em; font-size: 150%; color: rgb(0, 128, 255)">
+            A good night's sleep consists of 5-6 complete sleep cycles.
+          </p>
+          <center>
+            <a class="back" href="#" style="font-size: 200%; color: #cdbc67"
+              >Calculate Again</a
+            ><br />
+          </center>
+        </div>
+        <!-- end results -->
+      </div>
+    </div>
+    <!-- end row -->
+
+    <div class="row">
+      <div class="twelve columns">
+        <p
+          style="text-align: center; display: none; padding: 0 10px 0 10px"
+          id="feedback"
+        >
+          For feedback, questions, or concerns, please feel free to
+          <a href="mailto:contact@sleepyti.me" style="color: #cdbc67">e-mail</a>
+          us.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

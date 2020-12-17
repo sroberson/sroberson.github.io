@@ -1,0 +1,344 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300,600);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #001f3f;
+  color: #7fdbff;
+  font-size: 1.5em;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+button {
+  margin-top: 3rem;
+  display: inline-block;
+  height: 38px !important;
+  padding: 0 30px !important;
+  color: #222b5f !important;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #fff !important;
+  border-radius: 50px !important;
+  border: 1px solid #bbb !important;
+  cursor: pointer !important;
+  box-sizing: border-box;
+  font-family: "Raleway";
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px !important;
+  box-shadow: none;
+  box-sizing: border-box;
+  padding: 0 10px !important;
+}
+button,
+select {
+  text-transform: none;
+}
+
+
+#quizstrip {
+  background-color: #fd7a23;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+.inner-link {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#quizstrip a {
+  color: #ffffff;
+  width: 100%;
+  text-decoration: none;
+}
+
+#quizstrip a:hover {
+  color: #faedce;
+  cursor: pointer;
+}
+
+span.yellow {
+  color: #fff000;
+  font-weight: bold;
+}
+
+#container {
+  margin: 0 auto;
+  max-width: 890px;
+}
+
+p {
+  text-align: center;
+}
+
+.toggle,
+[id^="drop"] {
+  display: none;
+}
+
+/* Giving a background-color to the nav container. */
+nav {
+  margin: 0;
+  padding: 20px;
+  background-color: #001f3f;
+}
+
+#logo {
+  display: block;
+  padding: 0 30px;
+  float: left;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+/* Since we'll have the "ul li" "float:left"
+* we need to add a clear after the container. */
+nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Removing padding, margin and "list-style" from the "ul",
+* and adding "position:reltive" */
+nav ul {
+  float: left;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+/* Positioning the navigation items inline */
+nav ul li {
+  margin: 0px;
+  display: inline-block;
+  float: left;
+  background-color: #001f3f;
+}
+
+/* Styling the links */
+nav a {
+  display: block;
+  padding: 20px 20px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+nav ul li ul li:hover {
+  background: #fff;
+}
+
+/* Background color change on Hover */
+nav a:hover {
+  background-color: #fff;
+}
+
+/* Hide Dropdowns by Default
+* and giving it a position of absolute */
+nav ul ul {
+  display: none;
+  position: absolute;
+  /* has to be the same number as the "line-height" of "nav a" */
+  top: 60px;
+}
+
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+  display: inherit;
+}
+
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+  width: 220px;
+  float: none;
+  display: list-item;
+  position: relative;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* Second, Third and more Tiers
+* We move the 2nd and 3rd etc tier dropdowns to the left
+* by the amount of the width of the first tier.
+*/
+nav ul ul ul li {
+  position: relative;
+  top: -60px;
+  /* has to be the same number as the "width" of "nav ul ul li" */
+  left: 190px;
+}
+
+nav ul ul ul ul li {
+  position: relative;
+  top: -60px;
+  /* has to be the same number as the "width" of "nav ul ul li" */
+  left: 190px;
+}
+
+/* Change ' +' in order to change the Dropdown symbol */
+li > a:after {
+  content: "";
+}
+
+li > a:only-child:after {
+  content: "";
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+
+/* Media Queries
+--------------------------------------------- */
+@media all and (max-width: 768px) {
+  #logo {
+    display: inline;
+    padding: 1px;
+    width: 70%;
+    text-align: left;
+    float: left;
+  }
+
+  .icon {
+    max-width: 40%;
+    max-height: 40%;
+  }
+
+  .featur {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  nav {
+    margin: 0;
+    margin-bottom: 30px;
+  }
+
+  nav ul {
+    float: right;
+  }
+
+  /* Hide the navigation menu by default */
+  /* Also hide the  */
+  .toggle + a,
+  .menu {
+    display: none;
+  }
+
+  /* Stylinf the toggle lable */
+  .toggle {
+    display: block;
+    background-color: #001f3f;
+    padding: 14px 20px;
+    color: #ffffff;
+    font-size: 17px;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    margin: 10px;
+    text-align: end;
+  }
+
+  .toggle:hover {
+    background-color: #2880a0;
+  }
+
+  /* Display Dropdown when clicked on Parent Lable */
+  [id^="drop"]:checked + ul {
+    display: block;
+  }
+
+  /* Change menu item's width to 100% */
+  nav ul li {
+    display: block;
+    width: 100%;
+  }
+
+  nav ul ul .toggle,
+  nav ul ul a {
+    padding: 0 40px;
+  }
+
+  nav ul ul ul a {
+    padding: 0 80px;
+  }
+
+  nav a:hover,
+  nav ul ul ul a {
+    background-color: #fff;
+  }
+
+  nav ul li ul li .toggle,
+  nav ul ul a,
+  nav ul ul ul a {
+    padding: 14px 20px;
+    color: #fff;
+    font-size: 17px;
+  }
+
+  nav ul li ul li .toggle,
+  nav ul ul a {
+    background-color: #2880a0;
+  }
+
+  /* Hide Dropdowns by Default */
+  nav ul ul {
+    float: none;
+    position: static;
+    color: #ffffff;
+    /* has to be the same number as the "line-height" of "nav a" */
+  }
+
+  /* Hide menus on hover */
+  nav ul ul li:hover > ul,
+  nav ul li:hover > ul {
+    display: none;
+  }
+
+  /* Fisrt Tier Dropdown */
+  nav ul ul li {
+    display: block;
+    width: 100%;
+  }
+
+  nav ul ul ul li {
+    position: static;
+    /* has to be the same number as the "width" of "nav ul ul li" */
+  }
+}
+
+@media all and (max-width: 330px) {
+  nav ul li {
+    display: block;
+    width: 94%;
+  }
+}
